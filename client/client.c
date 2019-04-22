@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
         bzero(input, 50);
         bzero(buffer, 100);
         fgets(input, 50, stdin);
+        printf("%s", input);
         if (strncmp(input, "CRET", 4) == 0 || strncmp(input, "cret", 4) == 0)
         {
             strcpy(buffer, input);
@@ -93,7 +94,7 @@ int main(int argc, char *argv[])
                 printf("Error creating new user!\n");
         }
 
-        else if (strncmp(input, "USER", 4) == 0 || strncmp(command, "user", 4) == 0)
+        else if (strncmp(input, "USER", 4) == 0 || strncmp(input, "user", 4) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -107,7 +108,7 @@ int main(int argc, char *argv[])
             else
                 printf("Undefined Error\n");
         }
-        else if (strncmp(input, "PASS", 4) == 0 || strncmp(command, "pass", 4) == 0)
+        else if (strncmp(input, "PASS", 4) == 0 || strncmp(input, "pass", 4) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -121,7 +122,7 @@ int main(int argc, char *argv[])
             //else
             //    printf("error\n");
         }
-        else if (strncmp(input, "PWD", 3) == 0 || strncmp(command, "pwd", 3) == 0)
+        else if (strncmp(input, "PWD", 3) == 0 || strncmp(input, "pwd", 3) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -137,7 +138,7 @@ int main(int argc, char *argv[])
                 printf("The path of the remote directory is: %s\n", buffer);
             }
         }
-        else if (strncmp(input, "CWD", 3) == 0 || strncmp(command, "cwd", 3) == 0)
+        else if (strncmp(input, "CWD", 3) == 0 || strncmp(input, "cwd", 3) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -152,7 +153,7 @@ int main(int argc, char *argv[])
             else
                 errormsg(status);
         }
-        else if (strncmp(input, "RMD", 3) == 0 || strncmp(command, "rmd", 3) == 0)
+        else if (strncmp(input, "RMD", 3) == 0 || strncmp(input, "rmd", 3) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -166,7 +167,7 @@ int main(int argc, char *argv[])
             else
                 errormsg(status);
         }
-        else if (strncmp(input, "MKD", 3) == 0 || strncmp(command, "mkd", 3) == 0)
+        else if (strncmp(input, "MKD", 3) == 0 || strncmp(input, "mkd", 3) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -180,7 +181,7 @@ int main(int argc, char *argv[])
             else
                 errormsg(status);
         }
-        else if (strncmp(input, "LIST", 4) == 0 || strncmp(command, "list", 4) == 0)
+        else if (strncmp(input, "LIST", 4) == 0 || strncmp(input, "list", 4) == 0)
         {
             strcpy(buffer, "LIST");
             n = write(sockfd, buffer, 100);
@@ -206,7 +207,7 @@ int main(int argc, char *argv[])
                 system("cat list_file.txt");
             }
         }
-        else if (strncmp(input, "STOR", 4) == 0 || strncmp(command, "stor", 4) == 0)
+        else if (strncmp(input, "STOR", 4) == 0 || strncmp(input, "stor", 4) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -275,7 +276,7 @@ int main(int argc, char *argv[])
         //         strcat(buffer,filename);
         //         system(buffer);
         //     }
-        else if (strncmp(input, "RETR", 4) == 0 || strncmp(command, "retr", 4) == 0)
+        else if (strncmp(input, "RETR", 4) == 0 || strncmp(input, "retr", 4) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -302,7 +303,7 @@ int main(int argc, char *argv[])
             fclose(fp);
             printf("The file was received successfully\n");
         }
-        else if (strncmp(input, "ABOR", 4) == 0 || strncmp(command, "abor", 4) == 0)
+        else if (strncmp(input, "ABOR", 4) == 0 || strncmp(input, "abor", 4) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -321,7 +322,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        else if (strncmp(input, "QUIT", 4) == 0 || strncmp(command, "quit", 4) == 0)
+        else if (strncmp(input, "QUIT", 4) == 0 || strncmp(input, "quit", 4) == 0)
         {
             strcpy(buffer, input);
             n = write(sockfd, buffer, 100);
@@ -339,6 +340,7 @@ int main(int argc, char *argv[])
         }
         else
         {
+            printf("no command");
             status = 502;
             errormsg(status);
         }

@@ -418,6 +418,7 @@ void request(int newsockfd)
     }
     else
     {
+        printf("No such command");
         char *msg = "no such command ";
         n = write(newsockfd, &msg, sizeof(msg));
         if (n < 0)
