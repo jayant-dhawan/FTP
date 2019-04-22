@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
 
     listen(sockfd, 5);
     clilen = sizeof(client_addr);
+    printf("FTP Server Started\n");
     while (1)
     {
         newsockfd = accept(sockfd, (struct sockaddr *)&client_addr, &clilen);
@@ -64,6 +65,7 @@ int main(int argc, char *argv[])
         {
             error("Error in creating new socket");
         }
+        printf("Client Connected\n");
         pid = fork();
         if (pid < 0)
             error("Error in fork");
