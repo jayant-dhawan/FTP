@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 
     listen(sockfd, 5);
     clilen = sizeof(client_addr);
-    printf("FTP Server Started\n");
+    printf("FTP Server\n");
     while (1)
     {
         newsockfd = accept(sockfd, (struct sockaddr *)&client_addr, &clilen);
@@ -121,7 +121,7 @@ void request(int newsockfd)
             if (strcmp(firstname, username) == 0)
             {
                 status = 331;
-                printf("Username Matched, Enter Password\n");
+                printf("331: Username Matched, Enter Password\n");
                 break;
             }
             else
@@ -409,6 +409,7 @@ void request(int newsockfd)
     else if (strncmp(command, "QUIT", 4) == 0 || strncmp(command, "quit", 4) == 0)
     {
         printf("FTP server quitting..\n");
+        printf("Client %s disconnected", username);
         i = 1;
         n = write(newsockfd, &i, sizeof(int));
         if (n < 0)

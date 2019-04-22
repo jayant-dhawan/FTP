@@ -24,6 +24,8 @@ void errormsg(int error)
         printf("331 : Username exists password needed\n ");
     else if (error == 332)
         printf("332 : NO USER FOUND\n ");
+    else if (error == 502)
+        printf("502: Command not implemented");
 }
 
 int main(int argc, char *argv[])
@@ -128,7 +130,7 @@ int main(int argc, char *argv[])
             n = read(sockfd, buffer, 100);
             if (n < 0)
                 error("Error in reading command\n");
-            if (&buffer == 530)
+            if (buffer == 530)
                 errormsg(530);
             else
             {
