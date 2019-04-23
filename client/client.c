@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
         bzero(buffer, 100);
         fgets(input, 50, stdin);
         printf("%s", input);
+        
         if (strncmp(input, "CRET", 4) == 0 || strncmp(input, "cret", 4) == 0)
         {
             strcpy(buffer, input);
